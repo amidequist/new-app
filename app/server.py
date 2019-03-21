@@ -53,7 +53,8 @@ async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)[0]
+    prediction_info = learn.predict(img)
+    prediction = prediction_info[0]
     top_probs, top_classes = prediction_info[2].topk(5)
     # if probability is below 0.7 then it's not an image
     if top_probs[0].item() < 0.7:
