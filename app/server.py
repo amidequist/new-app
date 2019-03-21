@@ -57,7 +57,7 @@ async def analyze(request):
     top_probs, top_classes = prediction_info[2].topk(5)
     # if probability is below 0.7 then it's not an image
     if top_probs[0].item() < 0.7:
-        return JSONResponse({'result': 'Seems like the image is not an image of cocoa})
+        return JSONResponse({'result': 'Seems like the image is not an image of cocoa'})
     else:
         return JSONResponse({'result': str(prediction)})
 
