@@ -57,5 +57,10 @@ async def analyze(request):
     
     return JSONResponse({'result': str(prediction)})
 
+@app.route('/about')
+def about_page(request):
+    html = path/'view'/'about.html'
+    return HTMLResponse(html.open().read())
+
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
