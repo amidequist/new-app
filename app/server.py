@@ -57,6 +57,10 @@ async def analyze(request):
     
     return JSONResponse({'result': str(prediction)})
 
+@app.route('/try')
+async def tried(request):    
+    return JSONResponse({'result': 'ok'})
+
 @app.route('/about')
 def about_page(request):
     html = path/'view'/'about.html'
