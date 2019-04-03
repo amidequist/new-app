@@ -57,6 +57,19 @@ async def analyze(request):
     
     return JSONResponse({'result': str(prediction)})
 
+@app.route('/check', methods=['POST'])
+async def check(request):
+    data = await request.form()
+    img_bytes = await (data['file'].read())
+    img = open_image(BytesIO(img_bytes))
+    prediction_info = learn.predict(img)
+    prediction = prediction_info[0]
+    top_probs, top_classes = prediction_info[2].topk(1)
+    if top_probs.item() < 0.90:
+        return JSONResponse({'result': 'Seems like the image provided is not a cocoa tree'})
+    else:
+        return JSONResponse({'result': str(prediction)})
+
 @app.route('/try')
 async def tried(request):    
     return JSONResponse({'result': 'ok'})
