@@ -8,8 +8,8 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1pbNCuJI9vPj8bRHWNuFxxO15cDsxF9AK'
-export_file_name = 'rn-34-bp.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1xcTpai7PgVgwrm17x6E0YT3Rshjhm_vY'
+export_file_name = 'final.pkl'
 
 classes = ['Black Pod', 'Healthy Pod']
 path = Path(__file__).parent
